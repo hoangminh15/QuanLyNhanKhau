@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="521.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.nhanKhauController.NhanKhauController">
+<AnchorPane prefHeight="521.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.NhanKhauController">
    <children>
       <AnchorPane prefHeight="521.0" prefWidth="186.0" styleClass="left__home__pane" stylesheets="@home.css">
          <children>
@@ -46,9 +46,9 @@
             <TableColumn fx:id="diaChiHienNay" prefWidth="225.0" text="Địa chỉ hiện tại" />
         </columns>
       </TableView>
-      <Button layoutX="896.0" layoutY="36.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="Thêm mới" />
-      <Button layoutX="897.0" layoutY="102.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="ĐK tạm vắng" />
-      <Button layoutX="896.0" layoutY="166.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="ĐK tạm trú" />
-      <Button layoutX="896.0" layoutY="235.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="109.0" text="Khai tử" />
+      <Button layoutX="896.0" layoutY="36.0" mnemonicParsing="false" onAction="#themMoi" prefHeight="26.0" prefWidth="109.0" text="Thêm mới" />
+      <Button layoutX="897.0" layoutY="102.0" mnemonicParsing="false" onAction="#dangKyTamVang" prefHeight="26.0" prefWidth="109.0" text="ĐK tạm vắng" />
+      <Button layoutX="896.0" layoutY="166.0" mnemonicParsing="false" onAction="#dangKyTamTru" prefHeight="26.0" prefWidth="109.0" text="ĐK tạm trú" />
+      <Button layoutX="896.0" layoutY="235.0" mnemonicParsing="false" onAction="#khaiTu" prefHeight="26.0" prefWidth="109.0" text="Khai tử" />
    </children>
 </AnchorPane>

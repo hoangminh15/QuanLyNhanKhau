@@ -25,7 +25,7 @@ public class NhanKhauService {
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
             String query = "SELECT * FROM nhan_khau INNER JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau WHERE soCMT = " + cmt;
-            PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             int idNhanKhau = -1;
             while (rs.next()){
@@ -101,7 +101,7 @@ public class NhanKhauService {
         List<NhanKhauBean> list = new ArrayList<>();
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
-            String query = "SELECT * FROM nhan_khau INNER JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau ORDER BY ngayTao DESC LIMIT 0, 10";
+            String query = "SELECT * FROM nhan_khau INNER JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau ORDER BY ngayTao DESC";
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
@@ -295,9 +295,11 @@ public class NhanKhauService {
         }
         return list;
     }
-    
+
+
+
     /*
-     * Ham sử lý ngoại lệ : thông báo ra lỗi nhận được
+     * Ham xử lý ngoại lệ : thông báo ra lỗi nhận được
      */
     private void exceptionHandle(String message) {
 //        JOptionPane.showMessageDialog(null, message, "Warning", JOptionPane.ERROR_MESSAGE);

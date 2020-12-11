@@ -1,4 +1,4 @@
 package controllers.covidController;
 
-public class CovidController {
+public class KhaiBaoSucKhoeController {
 }

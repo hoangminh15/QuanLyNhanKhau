@@ -1,4 +1,4 @@
 package controllers.hoKhauController;
 
-public class HoKhauController {
+public class TachHoKhauController {
 }

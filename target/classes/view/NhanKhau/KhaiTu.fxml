@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="512.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.nhanKhauController.KhaiTuController">
+   <children>
+      <Label layoutX="22.0" layoutY="37.0" text="Số CMT người chết:" />
+      <TextField fx:id="cmtText" layoutX="150.0" layoutY="32.0" prefHeight="26.0" prefWidth="304.0" />
+      <Label layoutX="469.0" layoutY="37.0" text="(*)" textFill="RED" />
+      <Label layoutX="32.0" layoutY="142.0" text="Mã giấy tạm vắng:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="183.0" text="Nơi tạm trú:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="228.0" text="Từ ngày:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="272.0" text="Đến ngày:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="32.0" layoutY="319.0" text="Lý do:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField layoutX="183.0" layoutY="139.0" prefHeight="26.0" prefWidth="289.0" />
+      <TextField layoutX="183.0" layoutY="180.0" prefHeight="26.0" prefWidth="289.0" />
+      <DatePicker layoutX="183.0" layoutY="225.0" prefHeight="26.0" prefWidth="289.0" />
+      <DatePicker layoutX="183.0" layoutY="269.0" prefHeight="26.0" prefWidth="289.0" />
+      <TextArea layoutX="179.0" layoutY="319.0" prefHeight="115.0" prefWidth="297.0" />
+      <Button layoutX="425.0" layoutY="463.0" mnemonicParsing="false" text="Xác nhận" />
+      <Button layoutX="527.0" layoutY="463.0" mnemonicParsing="false" text="Hủy" />
+      <ImageView fx:id="checkedIcon" fitHeight="36.0" fitWidth="36.0" layoutX="571.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../icons/checked.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="498.0" layoutY="32.0" mnemonicParsing="false" text="Check" />
+      <Label layoutX="22.0" layoutY="77.0" text="Số CMT người khai:" />
+      <TextField fx:id="cmtText1" layoutX="150.0" layoutY="72.0" prefHeight="26.0" prefWidth="304.0" />
+      <Label layoutX="469.0" layoutY="77.0" text="(*)" textFill="RED" />
+      <ImageView fx:id="checkedIcon1" fitHeight="36.0" fitWidth="36.0" layoutX="571.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../icons/checked.png" />
+         </image>
+      </ImageView>
+      <Button layoutX="498.0" layoutY="72.0" mnemonicParsing="false" text="Check" />
+   </children>
+</AnchorPane>

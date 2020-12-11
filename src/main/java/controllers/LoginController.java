@@ -26,32 +26,24 @@ public class LoginController {
 
     public static UserMoldel currentUser = new UserMoldel();
 
-    public void login(ActionEvent event){
+    public void login(ActionEvent event) throws SQLException, ClassNotFoundException, IOException {
         String userName = userNameText.getText();
         String password = passwordText.getText();
-        try {
-            if(checkUserCredential(userName, password)){
-                changeSceneHome(event);
-            } else {
-                popUpWrongCreadentialAlert();
-            }
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (checkUserCredential(userName, password)) {
+            changeSceneHome(event);
+        } else {
+            popUpWrongCreadentialAlert();
         }
     }
 
     public boolean checkUserCredential(String userName, String password) throws SQLException, ClassNotFoundException {
         Connection connection = MysqlConnection.getMysqlConnection();
         Statement statement = connection.createStatement();
-        ResultSet rs = statement.executeQuery("SELECT * FROM users WHERE userName = '" + userName +"'");
-        if (rs == null){
+        ResultSet rs = statement.executeQuery("SELECT * FROM users WHERE userName = '" + userName + "'");
+        if (rs == null) {
             return false;
         }
-        while(rs.next()){
+        while (rs.next()) {
             if (rs.getString("passwd") == null ? password == null : rs.getString("passwd").equals(password)) {
                 LoginController.currentUser.setID(rs.getInt("ID"));
                 LoginController.currentUser.setUserName(rs.getString("userName"));
@@ -64,7 +56,7 @@ public class LoginController {
 
 
     public void changeSceneHome(ActionEvent event) throws IOException {
-        Stage stage =  (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("/view/Home.fxml"));
         Parent homeParent = loader.load();
@@ -73,7 +65,7 @@ public class LoginController {
         stage.centerOnScreen();
     }
 
-    public void popUpWrongCreadentialAlert(){
+    public void popUpWrongCreadentialAlert() {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Lỗi đăng nhập");
         alert.setHeaderText("Sai mật khẩu hoặc tài khoản");

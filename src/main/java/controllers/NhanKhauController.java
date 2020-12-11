@@ -1,6 +1,7 @@
-package controllers.nhanKhauController;
+package controllers;
 import beans.NhanKhauBean;
 import controllers.SceneSwitch;
+import controllers.nhanKhauController.SceneSwitchNhanKhau;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -37,29 +38,60 @@ public class NhanKhauController implements Initializable {
     private NhanKhauService nhanKhauService;
     private List<NhanKhauBean> listNhanKhauBeans;
     //ME added
-    private ObservableList<NhanKhauModel> listNhanKhauForTable;
+    private ObservableList<NhanKhauModel> observablelistNhanKhau;
     private SceneSwitch sceneSwitch;
+    private SceneSwitchNhanKhau sceneSwitchNhanKhau;
+    private List<NhanKhauModel> listItem;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        sceneSwitchNhanKhau = new SceneSwitchNhanKhau();
         nhanKhauService = new NhanKhauService();
-        listNhanKhauBeans = nhanKhauService.getListNhanKhau();
         sceneSwitch = new SceneSwitch();
         setDataTable();
     }
 
     public void setDataTable(){
-        List<NhanKhauModel> listItem = new ArrayList<>();
+        listNhanKhauBeans = nhanKhauService.getListNhanKhau();
+        listItem = new ArrayList<>();
         listNhanKhauBeans.forEach(nhanKhau -> {
             listItem.add(nhanKhau.getNhanKhauModel());
         });
-        listNhanKhauForTable = FXCollections.observableList(listItem);
+        observablelistNhanKhau = FXCollections.observableList(listItem);
         ID.setCellValueFactory(new PropertyValueFactory<>("ID"));
         hoTen.setCellValueFactory(new PropertyValueFactory<>("hoTen"));
         namSinh.setCellValueFactory(new PropertyValueFactory<>("namSinh"));
         gioiTinh.setCellValueFactory(new PropertyValueFactory<>("gioiTinh"));
         diaChiHienNay.setCellValueFactory(new PropertyValueFactory<>("diaChiHienNay"));
-        table.setItems(listNhanKhauForTable);
+        table.setItems(observablelistNhanKhau);
+
+    }
+
+    public void updateAddedNhanKhau(NhanKhauBean nhanKhauBean){
+        NhanKhauModel nhanKhauAdded = nhanKhauBean.getNhanKhauModel();
+        observablelistNhanKhau.add(nhanKhauAdded);
+    }
+
+    public void themMoi(ActionEvent event) throws IOException {
+        sceneSwitchNhanKhau.changeSceneThemMoi(event);
+    }
+
+    public void dangKyTamVang(ActionEvent event) throws IOException {
+
+        sceneSwitchNhanKhau.changeSceneTamVang(event);
+    }
+
+    public void dangKyTamTru(ActionEvent event) throws IOException{
+        sceneSwitchNhanKhau.changeSceneTamTru(event);
+    }
+
+    public void khaiTu(ActionEvent event) throws IOException {
+        sceneSwitchNhanKhau.changeSceneKhaiTu(event);
+    }
+
+    public void refreshData(NhanKhauBean nhanKhauBean) {
+        listNhanKhauBeans = nhanKhauService.getListNhanKhau();
+        updateAddedNhanKhau(nhanKhauBean);
     }
 
     public void changeSceneHome(ActionEvent event) throws IOException {
