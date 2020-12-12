@@ -12,47 +12,47 @@
    <children>
       <Label layoutX="26.0" layoutY="49.0" text="Họ và tên:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="26.0" layoutY="97.0" text="Ngày tháng năm sinh:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="26.0" layoutY="148.0" text="Nguyên quán:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="27.0" layoutY="203.0" text="Dân tộc:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="26.0" layoutY="260.0" text="Số CMT / Căn cước:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="24.0" layoutY="315.0" text="Nơi thường trú:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="25.0" layoutY="368.0" text="Trình độ học vấn:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="23.0" layoutY="421.0" text="Trình độ ngoại ngữ:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="24.0" layoutY="475.0" text="Nghề nghiệp:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <TextField fx:id="hoTenTxb" layoutX="242.0" layoutY="46.0" prefHeight="26.0" prefWidth="297.0" />
@@ -75,48 +75,48 @@
       <Label layoutX="548.0" layoutY="477.0" text="(*)" textFill="RED" />
       <Label layoutX="612.0" layoutY="49.0" text="Biệt danh:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <TextField fx:id="bietDanhTxb" layoutX="826.0" layoutY="46.0" prefHeight="26.0" prefWidth="297.0" />
       <Label layoutX="612.0" layoutY="97.0" text="Giới tính:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="612.0" layoutY="149.0" text="Tôn giáo:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="612.0" layoutY="204.0" text="Quốc tịch:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="612.0" layoutY="259.0" text="Hộ chiếu số:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="612.0" layoutY="315.0" text="Địa chỉ hiện tại:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="612.0" layoutY="368.0" text="Trình độ chuyên môn:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="612.0" layoutY="422.0" text="Biết tiếng dân tộc:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <Label layoutX="612.0" layoutY="476.0" text="Nơi làm việc:">
          <font>
-            <Font name="System Bold" size="15.0" />
+            <Font size="15.0" />
          </font>
       </Label>
       <TextField fx:id="tonGiaoTxb" layoutX="828.0" layoutY="145.0" prefHeight="26.0" prefWidth="297.0" />
