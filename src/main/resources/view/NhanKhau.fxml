@@ -37,7 +37,7 @@
             </Button>
          </children>
       </AnchorPane>
-      <TableView fx:id="table" layoutX="186.0" prefHeight="521.0" prefWidth="686.0">
+      <TableView fx:id="table" layoutX="186.0" onMouseClicked="#chonXemNhanKhau" prefHeight="521.0" prefWidth="686.0">
         <columns>
           <TableColumn fx:id="ID" prefWidth="75.0" text="ID" />
           <TableColumn fx:id="hoTen" prefWidth="169.0" text="Họ và tên" />

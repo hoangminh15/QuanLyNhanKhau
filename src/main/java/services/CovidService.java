@@ -1,9 +1,6 @@
 package services;
 
-import models.KhaiBaoCachLyModel;
-import models.KhaiBaoLoTrinhModel;
-import models.KhaiBaoSucKhoeModel;
-import models.TestCovidModel;
+import models.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -125,4 +122,86 @@ public class CovidService {
             e.printStackTrace();
         }
     }
+
+    public String getCMTfromID(int ID){
+        try{
+            Connection connection = MysqlConnection.getMysqlConnection();
+            String idString = String.valueOf(ID);
+            String query = "SELECT * FROM chung_minh_thu WHERE ID = '" + idString + "'";
+            ResultSet rs = connection.createStatement().executeQuery(query);
+            if(rs.next()){
+                String soCMT = rs.getString("soCMT");
+                return soCMT;
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public List<KhaiBaoCachLyModel> getKhaiBaoCachLyByID(int ID){
+        List<KhaiBaoCachLyModel> list = new ArrayList<>();
+        try{
+            Connection  connection = MysqlConnection.getMysqlConnection();
+            String query = "SELECT * FROM QuanLyNhanKhau.khai_bao_canh_ly WHERE ID = '" + ID + "'";
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()){
+                KhaiBaoCachLyModel khaiBaoCachLyModel = new KhaiBaoCachLyModel();
+                khaiBaoCachLyModel.setID(rs.getInt("ID"));
+                khaiBaoCachLyModel.setHoTen(rs.getString("hoTen"));
+                khaiBaoCachLyModel.setThoiGianBatDau(rs.getString("thoiGianBatDau"));
+                khaiBaoCachLyModel.setThoiGianKetThuc(rs.getString("thoiGianKetThuc"));
+                khaiBaoCachLyModel.setMucDo(rs.getString("mucDo"));
+                khaiBaoCachLyModel.setDiaDiemCachLy(rs.getString("diaDiemCachLy"));
+                list.add(khaiBaoCachLyModel);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public List<KhaiBaoLoTrinhModel> getKhaiBaoLoTrinhByID(int ID){
+        List<KhaiBaoLoTrinhModel> list = new ArrayList<>();
+        try{
+            Connection connection = MysqlConnection.getMysqlConnection();
+            String query = "SELECT * FROM khai_bao_lo_trinh WHERE ID = '" + ID + "'";
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            while(rs.next()){
+                KhaiBaoLoTrinhModel khaiBaoLoTrinhModel = new KhaiBaoLoTrinhModel();
+                khaiBaoLoTrinhModel.setID(rs.getInt("ID"));
+                khaiBaoLoTrinhModel.setHoTen(rs.getString("hoTen"));
+                khaiBaoLoTrinhModel.setThoiGianBatDau(rs.getString("thoiGianBatDau"));
+                khaiBaoLoTrinhModel.setThoiGianKetThuc(rs.getString("thoiGianKetThuc"));
+                khaiBaoLoTrinhModel.setDiaDiem(rs.getString("diaDiem"));
+                list.add(khaiBaoLoTrinhModel);
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return list;
+    }
+
+    public KhaiBaoSucKhoeModel getKhaiBaoSucKhoeByID(int ID){
+        KhaiBaoSucKhoeModel khaiBaoSucKhoeModel = new KhaiBaoSucKhoeModel();
+        try{
+            Connection connection = MysqlConnection.getMysqlConnection();
+            String query = "SELECT * FROM khai_bao_suc_khoe WHERE ID = '" + ID + "'";
+            Statement statement = connection.createStatement();
+            ResultSet rs = statement.executeQuery(query);
+            if(rs.next()){
+                khaiBaoSucKhoeModel.setID(rs.getInt("ID"));
+                khaiBaoSucKhoeModel.setHoTen(rs.getString("hoTen"));
+                khaiBaoSucKhoeModel.setTrieuChung(rs.getString("trieuChung"));
+                khaiBaoSucKhoeModel.setNguoiTiepXuc(rs.getString("nguoiTiepXuc"));
+                khaiBaoSucKhoeModel.setTieuSuBenh(rs.getString("tieuSuBenh"));
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return khaiBaoSucKhoeModel;
+    }
+
 }

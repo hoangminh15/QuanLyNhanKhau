@@ -72,8 +72,9 @@ public class CovidController implements Initializable {
         table.setItems(testCovidModelList);
     }
 
-    public void selectRow(MouseEvent event){
-        if(table.getSelectionModel().getSelectedItem() != null){
+    public void selectRow(MouseEvent event) throws IOException {
+        TestCovidModel testCovidModel = (TestCovidModel) table.getSelectionModel().getSelectedItem();
+        if(testCovidModel != null){
             khaiBaoSucKhoeButton.setDisable(false);
             khaiBaoLoTrinhButton.setDisable(false);
             khaiBaoCachLyButton.setDisable(false);
@@ -81,6 +82,10 @@ public class CovidController implements Initializable {
             khaiBaoSucKhoeButton.setDisable(true);
             khaiBaoLoTrinhButton.setDisable(true);
             khaiBaoCachLyButton.setDisable(true);
+        }
+
+        if(event.getClickCount() == 2 && testCovidModel != null){
+            sceneSwitchCovid.changeSceneChiTiet(event, testCovidModel);
         }
     }
 

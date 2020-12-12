@@ -117,6 +117,10 @@ public class NhanKhauService {
                 chungMinhThuModel.setSoCMT(rs.getString("soCMT"));
                 chungMinhThuModel.setNgayCap(rs.getDate("ngayCap"));
                 chungMinhThuModel.setNoiCap(rs.getString("noiCap"));
+                nhanKhau.setNguyenQuan(rs.getString("nguyenQuan"));
+                nhanKhau.setDanToc(rs.getString("danToc"));
+                nhanKhau.setTonGiao(rs.getString("tonGiao"));
+                nhanKhau.setQuocTich(rs.getString("quocTich"));
                 list.add(nhanKhauBean);
             }
             preparedStatement.close();
@@ -163,7 +167,7 @@ public class NhanKhauService {
         query += " ORDER BY ngayTao DESC";
          try {
             Connection connection = MysqlConnection.getMysqlConnection();
-            PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             int idNhanKhau = -1;
             while (rs.next()){

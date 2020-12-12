@@ -10,6 +10,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import models.NhanKhauModel;
 import services.NhanKhauService;
 
@@ -18,6 +19,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class NhanKhauController implements Initializable {
 
@@ -67,6 +69,13 @@ public class NhanKhauController implements Initializable {
 
     }
 
+    public void chonXemNhanKhau(MouseEvent event) throws IOException {
+        NhanKhauModel nhanKhauModel = table.getSelectionModel().getSelectedItem();
+        if(event.getClickCount() == 2 && (nhanKhauModel != null)){
+            sceneSwitchNhanKhau.changeSceneChiTiet(event, nhanKhauModel);
+        }
+    }
+
     public void updateAddedNhanKhau(NhanKhauBean nhanKhauBean){
         NhanKhauModel nhanKhauAdded = nhanKhauBean.getNhanKhauModel();
         observablelistNhanKhau.add(nhanKhauAdded);
@@ -77,7 +86,6 @@ public class NhanKhauController implements Initializable {
     }
 
     public void dangKyTamVang(ActionEvent event) throws IOException {
-
         sceneSwitchNhanKhau.changeSceneTamVang(event);
     }
 

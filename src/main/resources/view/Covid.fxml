@@ -5,6 +5,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="521.0" prefWidth="1030.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CovidController">
@@ -51,10 +52,12 @@
       <Button fx:id="khaiBaoLoTrinhButton" layoutX="890.0" layoutY="211.0" mnemonicParsing="false" onAction="#khaiBaoLoTrinh" prefHeight="33.0" prefWidth="127.0" text="Khai báo lộ trình" />
       <Button fx:id="khaiBaoSucKhoeButton" layoutX="884.0" layoutY="263.0" mnemonicParsing="false" onAction="#khaiBaoSucKhoe" prefHeight="33.0" prefWidth="138.0" text="Khai báo sức khỏe" />
       <Button fx:id="themButton" layoutX="887.0" layoutY="20.0" mnemonicParsing="false" onAction="#themMoi" prefHeight="63.0" prefWidth="127.0" text="Thêm người được theo dõi cách ly" wrapText="true" />
-      <Label layoutX="884.0" layoutY="96.0" prefHeight="54.0" prefWidth="138.0" text="*Hãy chọn một người trong bảng để có thể khai báo" textAlignment="CENTER" textFill="RED" wrapText="true">
+      <Label layoutX="884.0" layoutY="96.0" prefHeight="54.0" prefWidth="138.0" text="Hãy chọn một người trong bảng để có thể khai báo" textAlignment="CENTER" textFill="RED" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
+      <Label layoutX="887.0" layoutY="439.0" prefHeight="54.0" prefWidth="127.0" text="Click đúp để xem thông tin người được theo dõi" textAlignment="CENTER" wrapText="true" />
+      <Line endX="76.0" layoutX="954.0" layoutY="426.0" opacity="0.26" startX="-82.0" />
    </children>
 </AnchorPane>

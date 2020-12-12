@@ -5,8 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import models.NhanKhauModel;
 
 import java.io.IOException;
 
@@ -71,6 +73,23 @@ public class SceneSwitchNhanKhau {
         popUpStage.initModality(Modality.APPLICATION_MODAL);
         popUpStage.initOwner(stage);
         popUpStage.setTitle("Khai tử");
+        popUpStage.setScene(scene);
+        popUpStage.centerOnScreen();
+        popUpStage.show();
+    }
+
+    public void changeSceneChiTiet(MouseEvent event, NhanKhauModel nhanKhauModel) throws IOException{
+        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage popUpStage = new Stage();
+        loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/NhanKhau/ChiTiet.fxml"));
+        parent = loader.load();
+        scene = new Scene(parent);
+        ChiTietController chiTietController = loader.getController();
+        chiTietController.setData(nhanKhauModel);
+        popUpStage.initModality(Modality.APPLICATION_MODAL);
+        popUpStage.initOwner(stage);
+        popUpStage.setTitle("Chi tiết nhân khẩu");
         popUpStage.setScene(scene);
         popUpStage.centerOnScreen();
         popUpStage.show();
