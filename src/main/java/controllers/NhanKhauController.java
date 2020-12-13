@@ -1,7 +1,6 @@
 package controllers;
 import beans.NhanKhauBean;
-import controllers.SceneSwitch;
-import controllers.nhanKhauController.SceneSwitchNhanKhau;
+import controllers.nhanKhauControllers.SceneSwitchNhanKhau;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -19,7 +18,6 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.stream.Collectors;
 
 public class NhanKhauController implements Initializable {
 

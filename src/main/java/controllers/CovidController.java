@@ -1,19 +1,15 @@
 package controllers;
 
-import controllers.SceneSwitch;
-import controllers.covidController.KhaiBaoCachLyController;
-import controllers.covidController.SceneSwitchCovid;
+import controllers.covidControllers.SceneSwitchCovid;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import models.TestCovidModel;
 import services.CovidService;

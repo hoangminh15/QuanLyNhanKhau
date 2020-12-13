@@ -9,14 +9,14 @@ module org.example {
     opens controllers to javafx.fxml;
     exports controllers;
 
-    opens controllers.nhanKhauController to javafx.fxml;
-    exports controllers.nhanKhauController;
+    opens controllers.nhanKhauControllers to javafx.fxml;
+    exports controllers.nhanKhauControllers;
 
-    opens controllers.hoKhauController to javafx.fxml;
-    exports controllers.hoKhauController;
+    opens controllers.hoKhauControllers to javafx.fxml;
+    exports controllers.hoKhauControllers;
 
-    opens controllers.covidController to javafx.fxml;
-    exports controllers.covidController;
+    opens controllers.covidControllers to javafx.fxml;
+    exports controllers.covidControllers;
 
     opens models to javafx.base;
     exports models;
