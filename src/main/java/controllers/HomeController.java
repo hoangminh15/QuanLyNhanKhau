@@ -7,6 +7,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import services.MysqlConnection;
@@ -28,11 +29,14 @@ public class HomeController implements Initializable {
     Label nhanKhauTamTruLb;
     @FXML
     Label nhanKhauTamVangLb;
+    @FXML
+    Button homeButton;
 
     SceneSwitch sceneSwitch;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        homeButton.setStyle("-fx-background-color: #0B82FA; -fx-text-fill: white");
         setData();
         sceneSwitch = new SceneSwitch();
     }

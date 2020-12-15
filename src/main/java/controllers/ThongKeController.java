@@ -46,6 +46,8 @@ public class ThongKeController implements Initializable {
     TextField denNamText;
     @FXML
     Button showButton;
+    @FXML
+    Button thongKeButton;
 
 
     SceneSwitch sceneSwitch;
@@ -63,6 +65,7 @@ public class ThongKeController implements Initializable {
         nhanKhauService = new NhanKhauService();
         setData();
         showButton.setStyle("-fx-background-color: #0063B7; -fx-text-fill: white");
+        thongKeButton.setStyle("-fx-background-color: #0B82FA; -fx-text-fill: white");
         gioiTinhList = FXCollections.observableArrayList("Toàn bộ", "Nam", "Nữ");
         tinhTrangList = FXCollections.observableArrayList("Toàn bộ", "Thường trú", "Tạm trú", "Tạm vắng");
         gioiTinhCB.setItems(gioiTinhList);

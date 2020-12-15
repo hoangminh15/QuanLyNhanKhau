@@ -10,57 +10,55 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="512.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.nhanKhauControllers.KhaiTuController">
+<AnchorPane prefHeight="489.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.nhanKhauControllers.KhaiTuController">
    <children>
       <Label layoutX="22.0" layoutY="37.0" text="Số CMT người chết:" />
-      <TextField fx:id="cmtText" layoutX="150.0" layoutY="32.0" prefHeight="26.0" prefWidth="304.0" />
+      <TextField fx:id="soCMTnguoiKhai" layoutX="150.0" layoutY="32.0" prefHeight="26.0" prefWidth="304.0" />
       <Label layoutX="469.0" layoutY="37.0" text="(*)" textFill="RED" />
-      <Label layoutX="32.0" layoutY="142.0" text="Mã giấy tạm vắng:">
+      <Label layoutX="33.0" layoutY="165.0" text="Số giấy khai tử">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="32.0" layoutY="183.0" text="Nơi tạm trú:">
+      <Label layoutX="33.0" layoutY="210.0" text="Ngày khai:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="32.0" layoutY="228.0" text="Từ ngày:">
+      <Label layoutX="33.0" layoutY="254.0" text="Ngày mất:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="32.0" layoutY="272.0" text="Đến ngày:">
+      <Label layoutX="33.0" layoutY="301.0" text="Lý do chết:">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="32.0" layoutY="319.0" text="Lý do:">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <TextField layoutX="183.0" layoutY="139.0" prefHeight="26.0" prefWidth="289.0" />
-      <TextField layoutX="183.0" layoutY="180.0" prefHeight="26.0" prefWidth="289.0" />
-      <DatePicker layoutX="183.0" layoutY="225.0" prefHeight="26.0" prefWidth="289.0" />
-      <DatePicker layoutX="183.0" layoutY="269.0" prefHeight="26.0" prefWidth="289.0" />
-      <TextArea layoutX="179.0" layoutY="319.0" prefHeight="115.0" prefWidth="297.0" />
-      <Button layoutX="425.0" layoutY="463.0" mnemonicParsing="false" text="Xác nhận" />
-      <Button layoutX="527.0" layoutY="463.0" mnemonicParsing="false" text="Hủy" />
+      <TextField fx:id="soGiayKhaiTu" layoutX="184.0" layoutY="162.0" prefHeight="26.0" prefWidth="289.0" />
+      <DatePicker fx:id="ngayKhai" layoutX="184.0" layoutY="207.0" prefHeight="26.0" prefWidth="289.0" />
+      <DatePicker fx:id="ngayMat" layoutX="184.0" layoutY="251.0" prefHeight="26.0" prefWidth="289.0" />
+      <TextArea fx:id="lyDoChet" layoutX="180.0" layoutY="301.0" prefHeight="115.0" prefWidth="297.0" wrapText="true" />
+      <Button layoutX="426.0" layoutY="445.0" mnemonicParsing="false" onAction="#xacNhan" text="Xác nhận" fx:id="xacNhanButton" />
+      <Button fx:id="huyButton" layoutX="528.0" layoutY="445.0" mnemonicParsing="false" onAction="#huy" text="Hủy" />
       <ImageView fx:id="checkedIcon" fitHeight="36.0" fitWidth="36.0" layoutX="571.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/checked.png" />
          </image>
       </ImageView>
-      <Button layoutX="498.0" layoutY="32.0" mnemonicParsing="false" text="Check" />
+      <Button fx:id="checkButton" layoutX="498.0" layoutY="32.0" mnemonicParsing="false" onAction="#check" text="Check" />
       <Label layoutX="22.0" layoutY="77.0" text="Số CMT người khai:" />
-      <TextField fx:id="cmtText1" layoutX="150.0" layoutY="72.0" prefHeight="26.0" prefWidth="304.0" />
+      <TextField fx:id="soCMTnguoiChet" layoutX="150.0" layoutY="72.0" prefHeight="26.0" prefWidth="304.0" />
       <Label layoutX="469.0" layoutY="77.0" text="(*)" textFill="RED" />
       <ImageView fx:id="checkedIcon1" fitHeight="36.0" fitWidth="36.0" layoutX="571.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../icons/checked.png" />
          </image>
       </ImageView>
-      <Button layoutX="498.0" layoutY="72.0" mnemonicParsing="false" text="Check" />
+      <Button fx:id="check1Button" layoutX="498.0" layoutY="72.0" mnemonicParsing="false" onAction="#check" text="Check" />
+      <Label layoutX="490.0" layoutY="167.0" text="(*)" textFill="RED" />
+      <Label layoutX="490.0" layoutY="212.0" text="(*)" textFill="RED" />
+      <Label layoutX="490.0" layoutY="256.0" text="(*)" textFill="RED" />
+      <Label layoutX="490.0" layoutY="303.0" text="(*)" textFill="RED" />
    </children>
 </AnchorPane>

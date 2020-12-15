@@ -1,6 +1,7 @@
 package controllers;
 
 import beans.HoKhauBean;
+import controllers.hoKhauControllers.HoKhauHolder;
 import controllers.hoKhauControllers.SceneSwitchHoKhau;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.collections.FXCollections;
@@ -8,8 +9,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseEvent;
 import services.HoKhauService;
 
 import java.io.IOException;
@@ -26,6 +29,8 @@ public class HoKhauController implements Initializable {
     TableColumn<HoKhauBean, String> hoTen;
     @FXML
     TableColumn<HoKhauBean, String> diaChi;
+    @FXML
+    Button hoKhauButton;
 
     HoKhauService hoKhauService;
     List<HoKhauBean> listHoKhauBeans;
@@ -35,6 +40,7 @@ public class HoKhauController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        hoKhauButton.setStyle("-fx-background-color: #0B82FA; -fx-text-fill: white");
         sceneSwitch = new SceneSwitch();
         sceneSwitchHoKhau = new SceneSwitchHoKhau();
         hoKhauService = new HoKhauService();
@@ -56,6 +62,16 @@ public class HoKhauController implements Initializable {
 
     public void chuyenDi(ActionEvent event) throws IOException{
         sceneSwitchHoKhau.changeSceneChuyenDi(event);
+    }
+
+    public void xemChiTiet(MouseEvent event) throws IOException {
+        HoKhauBean selectedHoKhau = table.getSelectionModel().getSelectedItem();
+        HoKhauBean hoKhau = listHoKhauBeans.stream().filter(hoKhauBean -> hoKhauBean.getHoKhauModel().getMaHoKhau().equals(selectedHoKhau.getHoKhauModel().getMaHoKhau())).findFirst().orElse(new HoKhauBean());
+        HoKhauHolder hoKhauHolder = HoKhauHolder.getInstance();
+        hoKhauHolder.setHoKhauBean(hoKhau);
+        if(event.getClickCount() == 2 && selectedHoKhau != null){
+            sceneSwitchHoKhau.changeSceneChiTiet(event);
+        }
     }
 
     public void changeSceneHome(ActionEvent event) throws IOException {

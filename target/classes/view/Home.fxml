@@ -11,7 +11,7 @@
    <children>
       <AnchorPane prefHeight="521.0" prefWidth="186.0" styleClass="left__home__pane" stylesheets="@home.css">
          <children>
-            <Button layoutY="-2.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="186.0" styleClass="trang__chu__button" stylesheets="@home.css" text="Trang chủ" textFill="#fcfcfc">
+            <Button fx:id="homeButton" layoutY="-2.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="186.0" styleClass="trang__chu__button" stylesheets="@home.css" text="Trang chủ" textFill="#fcfcfc">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font></Button>

@@ -40,6 +40,8 @@ public class CovidController implements Initializable {
     Button khaiBaoLoTrinhButton;
     @FXML
     Button khaiBaoSucKhoeButton;
+    @FXML
+    Button covidButton;
 
     SceneSwitch sceneSwitch;
     SceneSwitchCovid sceneSwitchCovid;
@@ -53,6 +55,7 @@ public class CovidController implements Initializable {
         khaiBaoSucKhoeButton.setDisable(true);
 
         themButton.setStyle("-fx-background-color: #0063B7; -fx-text-fill: white");
+        covidButton.setStyle("-fx-background-color: #0B82FA; -fx-text-fill: white");
 
         sceneSwitch = new SceneSwitch();
         sceneSwitchCovid = new SceneSwitchCovid();

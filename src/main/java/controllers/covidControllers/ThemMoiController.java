@@ -43,7 +43,7 @@ public class ThemMoiController implements Initializable {
         setUpForCheck();
     }
 
-    public void check(ActionEvent event){
+    public void check(ActionEvent event) {
         String tempCMT = soCMTText.getText().trim();
         if (tempCMT.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -64,7 +64,7 @@ public class ThemMoiController implements Initializable {
         }
         int tempID = checkCMT(soCMTText.getText());
         String tempName = checkCMTgetName(soCMTText.getText());
-        if (tempID != -1){
+        if (tempID != -1) {
             soCMTText.setEditable(false);
             checkedIcon.setVisible(true);
             thoiGianTestDP.setDisable(false);
@@ -75,7 +75,7 @@ public class ThemMoiController implements Initializable {
             hoTenLB.setText(tempName);
 
             testCovidModel.setID(tempID);
-        } else{
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setContentText("Không tìm thấy số CMT trong hệ thống");
             alert.show();
@@ -101,7 +101,7 @@ public class ThemMoiController implements Initializable {
         return -1;
     }
 
-    public String checkCMTgetName(String cmt){
+    public String checkCMTgetName(String cmt) {
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
             String query = "SELECT * FROM nhan_khau LEFT JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau WHERE soCMT = ?";
@@ -120,18 +120,13 @@ public class ThemMoiController implements Initializable {
         return null;
     }
 
-    public void xacNhan(ActionEvent event){
-        if(!validateForm()){
-            Alert errorMessage = new Alert(Alert.AlertType.ERROR);
-            errorMessage.setTitle("Warning!");
-            errorMessage.setContentText("Vui lòng nhập hết các trường bắt buộc!");
-            errorMessage.show();
-        } else {
+    public void xacNhan(ActionEvent event) {
+        if (!validateForm()) {
             testCovidModel.setHoTen(hoTenLB.getText());
             testCovidModel.setThoiGianTest(String.valueOf(thoiGianTestDP.getValue()));
             testCovidModel.setKetQuaTest(ketQuaTestText.getText().trim());
             testCovidModel.setHinhThucTest(hinhThucTestText.getText().trim());
-            if(new CovidService().addNew(testCovidModel)){
+            if (new CovidService().addNew(testCovidModel)) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setContentText("Thêm thành công");
                 alert.show();
@@ -146,12 +141,12 @@ public class ThemMoiController implements Initializable {
         }
     }
 
-    public void huy(ActionEvent event){
+    public void huy(ActionEvent event) {
         Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         stage.hide();
     }
 
-    public void setUpForCheck(){
+    public void setUpForCheck() {
         checkedIcon.setVisible(false);
         thoiGianTestDP.setDisable(true);
         ketQuaTestText.setDisable(true);
@@ -162,7 +157,7 @@ public class ThemMoiController implements Initializable {
     }
 
     private boolean validateForm() {
-        return !(thoiGianTestDP.getValue().equals("")
+        return (thoiGianTestDP.getValue() == null
                 || ketQuaTestText.getText().trim().isEmpty()
                 || hinhThucTestText.getText().trim().isEmpty());
     }

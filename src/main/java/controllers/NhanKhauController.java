@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -33,6 +34,8 @@ public class NhanKhauController implements Initializable {
     TableColumn gioiTinh;
     @FXML
     TableColumn diaChiHienNay;
+    @FXML
+    Button nhanKhauButton;
 
 
     private NhanKhauService nhanKhauService;
@@ -49,6 +52,7 @@ public class NhanKhauController implements Initializable {
         nhanKhauService = new NhanKhauService();
         sceneSwitch = new SceneSwitch();
         setDataTable();
+        nhanKhauButton.setStyle("-fx-background-color: #0B82FA; -fx-text-fill: white");
     }
 
     public void setDataTable(){

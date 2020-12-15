@@ -58,7 +58,7 @@
                   <TableColumn fx:id="diaDiem" prefWidth="433.0" text="Địa điểm" />
                </columns>
             </TableView>
-            <Label layoutX="33.0" layoutY="238.0" text="Khai báo lộ trình:" textFill="#0f0aff">
+            <Label layoutX="33.0" layoutY="238.0" text="Khai báo sức khỏe:" textFill="#0f0aff">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

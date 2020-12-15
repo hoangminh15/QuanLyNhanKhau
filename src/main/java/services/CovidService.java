@@ -41,16 +41,30 @@ public class CovidService {
         String thoiGianTest = testCovidModel.getThoiGianTest();
         String ketQuaTest = testCovidModel.getKetQuaTest();
         String hinhThucTest = testCovidModel.getHinhThucTest();
-        try{
-            Connection connection = MysqlConnection.getMysqlConnection();
-            Statement statement = connection.createStatement();
-            String query = "INSERT INTO `QuanLyNhanKhau`.`testcovid` (`ID`, `hoTen`, `thoiGianTest`, `ketQuaTest`, `hinhThucTest`) VALUES ('" + ID + "', '" + hoTen + "' , '" + thoiGianTest + "', '" + ketQuaTest + "', '" + hinhThucTest + "')";
-            statement.executeUpdate(query);
-            return true;
-        } catch(Exception e){
-            e.printStackTrace();
-            return false;
+        if (thoiGianTest.isBlank() || ketQuaTest.isBlank() || hinhThucTest.isBlank()){
+            try{
+                Connection connection = MysqlConnection.getMysqlConnection();
+                Statement statement = connection.createStatement();
+                String query = "INSERT INTO `QuanLyNhanKhau`.`testcovid` (`ID`, `hoTen`) VALUES ('" + ID + "', '" + hoTen + "');";
+                statement.executeUpdate(query);
+                return true;
+            } catch(Exception e){
+                e.printStackTrace();
+                return false;
+            }
+        } else if (!thoiGianTest.isBlank() && !ketQuaTest.isBlank() && !hinhThucTest.isBlank()){
+            try{
+                Connection connection = MysqlConnection.getMysqlConnection();
+                Statement statement = connection.createStatement();
+                String query = "INSERT INTO `QuanLyNhanKhau`.`testcovid` (`ID`, `hoTen`, `thoiGianTest`, `ketQuaTest`, `hinhThucTest`) VALUES ('" + ID + "', '" + hoTen + "' , '" + thoiGianTest + "', '" + ketQuaTest + "', '" + hinhThucTest + "')";
+                statement.executeUpdate(query);
+                return true;
+            } catch(Exception e){
+                e.printStackTrace();
+                return false;
+            }
         }
+        return true;
     }
 
     public void themThongTinCachLy(KhaiBaoCachLyModel khaiBaoCachLyModel) {

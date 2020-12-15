@@ -15,7 +15,7 @@
                   <Font name="System Bold" size="20.0" />
                </font>
             </Button>
-            <Button layoutX="16.0" layoutY="106.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="170.0" styleClass="home__button" stylesheets="@home.css" text="Nhân khẩu" textFill="WHITE">
+            <Button fx:id="nhanKhauButton" layoutX="16.0" layoutY="106.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="170.0" styleClass="home__button" stylesheets="@home.css" text="Nhân khẩu" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>

@@ -32,7 +32,7 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="16.0" layoutY="339.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="170.0" styleClass="home__button" stylesheets="@home.css" text="Covid" textFill="WHITE">
+            <Button fx:id="covidButton" layoutX="16.0" layoutY="339.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="170.0" styleClass="home__button" stylesheets="@home.css" text="Covid" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
@@ -51,7 +51,7 @@
       <Button fx:id="khaiBaoCachLyButton" layoutX="890.0" layoutY="159.0" mnemonicParsing="false" onAction="#khaiBaoCachLy" prefHeight="33.0" prefWidth="127.0" text="Khai báo cách ly" />
       <Button fx:id="khaiBaoLoTrinhButton" layoutX="890.0" layoutY="211.0" mnemonicParsing="false" onAction="#khaiBaoLoTrinh" prefHeight="33.0" prefWidth="127.0" text="Khai báo lộ trình" />
       <Button fx:id="khaiBaoSucKhoeButton" layoutX="884.0" layoutY="263.0" mnemonicParsing="false" onAction="#khaiBaoSucKhoe" prefHeight="33.0" prefWidth="138.0" text="Khai báo sức khỏe" />
-      <Button fx:id="themButton" layoutX="887.0" layoutY="20.0" mnemonicParsing="false" onAction="#themMoi" prefHeight="63.0" prefWidth="127.0" text="Thêm người được theo dõi cách ly" wrapText="true" />
+      <Button fx:id="themButton" layoutX="887.0" layoutY="20.0" mnemonicParsing="false" onAction="#themMoi" prefHeight="63.0" prefWidth="127.0" text="Thêm người được theo dõi" wrapText="true" />
       <Label layoutX="884.0" layoutY="96.0" prefHeight="54.0" prefWidth="138.0" text="Hãy chọn một người trong bảng để có thể khai báo" textAlignment="CENTER" textFill="RED" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />

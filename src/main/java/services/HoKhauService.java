@@ -77,7 +77,7 @@ public class HoKhauService {
         
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
-            String query = "SELECT * FROM ho_khau INNER JOIN nhan_khau ON ho_khau.idChuHo = nhan_khau.ID ORDER BY ngayTao DESC LIMIT 0, 10";
+            String query = "SELECT * FROM ho_khau INNER JOIN nhan_khau ON ho_khau.idChuHo = nhan_khau.ID ORDER BY ngayTao DESC";
             PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             while (rs.next()){
@@ -236,7 +236,7 @@ public class HoKhauService {
             String sql = "DELETE FROM thanh_vien_cua_ho WHERE idNhanKhau = " + item.getIdHoKhau();
             try {
                 Connection connection = MysqlConnection.getMysqlConnection();
-                PreparedStatement preparedStatement = connection.prepareStatement(query);
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
                 int rs = preparedStatement.executeUpdate();
             } catch (Exception e) {
                 System.out.println(e.getMessage());
@@ -271,6 +271,18 @@ public class HoKhauService {
         } catch (Exception e) {
             System.out.println("services.HoKhauService.chuyenDi()");
             System.out.println(e.getMessage());
+        }
+    }
+
+    public void khaiTu(int idNguoiChet) {
+        try{
+            Connection connection = MysqlConnection.getMysqlConnection();
+            Statement statement = connection.createStatement();
+            String query = "DELETE FROM `QuanLyNhanKhau`.`nhan_khau` WHERE (`ID` = '" + idNguoiChet + "');";
+            statement.executeUpdate(query);
+
+        } catch (Exception e){
+            e.printStackTrace();
         }
     }
 }
