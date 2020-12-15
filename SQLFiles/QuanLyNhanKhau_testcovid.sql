@@ -28,10 +28,9 @@ CREATE TABLE `testcovid` (
   `thoiGianTest` date DEFAULT NULL,
   `ketQuaTest` varchar(45) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
   `hinhThucTest` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  PRIMARY KEY (`ID`),
   KEY `IdNhanKhau` (`hoTen`),
-  KEY `fk_testcovid_1_idx` (`hoTen`,`ID`),
-  CONSTRAINT `fk_testcovid_1` FOREIGN KEY (`ID`) REFERENCES `nhan_khau` (`ID`)
+  KEY `fk_testcovid_1_idx` (`ID`),
+  CONSTRAINT `fk_testcovid_1` FOREIGN KEY (`ID`) REFERENCES `nhan_khau` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -41,7 +40,7 @@ CREATE TABLE `testcovid` (
 
 LOCK TABLES `testcovid` WRITE;
 /*!40000 ALTER TABLE `testcovid` DISABLE KEYS */;
-INSERT INTO `testcovid` VALUES (39,'Minh','2020-11-12','Âm tính','Test nhanh'),(40,'hon','2020-12-01','a','a');
+INSERT INTO `testcovid` VALUES (39,'Minh','2020-11-12','Âm tính','Test nhanh');
 /*!40000 ALTER TABLE `testcovid` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -54,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-13 11:26:06
+-- Dump completed on 2020-12-15 21:52:10

@@ -27,7 +27,9 @@ CREATE TABLE `khai_bao_lo_trinh` (
   `hoTen` varchar(100) NOT NULL,
   `thoiGianBatDau` date NOT NULL,
   `thoiGianKetThuc` date NOT NULL,
-  `diaDiem` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+  `diaDiem` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  KEY `fk_khai_bao_lo_trinh_1_idx` (`ID`),
+  CONSTRAINT `fk_khai_bao_lo_trinh_1` FOREIGN KEY (`ID`) REFERENCES `nhan_khau` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -37,7 +39,6 @@ CREATE TABLE `khai_bao_lo_trinh` (
 
 LOCK TABLES `khai_bao_lo_trinh` WRITE;
 /*!40000 ALTER TABLE `khai_bao_lo_trinh` DISABLE KEYS */;
-INSERT INTO `khai_bao_lo_trinh` VALUES (39,'Minh','2020-12-01','2020-12-02','Trung Quoc');
 /*!40000 ALTER TABLE `khai_bao_lo_trinh` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-13 11:26:05
+-- Dump completed on 2020-12-15 21:52:09

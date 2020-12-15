@@ -29,7 +29,8 @@ CREATE TABLE `khai_bao_canh_ly` (
   `thoiGianKetThuc` date NOT NULL,
   `mucDo` varchar(5) NOT NULL,
   `diaDiemCachLy` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  KEY `khai_bao_canh_ly_ibfk_1` (`hoTen`)
+  KEY `fk_khai_bao_canh_ly_1_idx` (`ID`),
+  CONSTRAINT `fk_khai_bao_canh_ly_1` FOREIGN KEY (`ID`) REFERENCES `nhan_khau` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -39,7 +40,7 @@ CREATE TABLE `khai_bao_canh_ly` (
 
 LOCK TABLES `khai_bao_canh_ly` WRITE;
 /*!40000 ALTER TABLE `khai_bao_canh_ly` DISABLE KEYS */;
-INSERT INTO `khai_bao_canh_ly` VALUES (39,'Minh','2020-11-30','2020-12-01','F0','test'),(40,'hon','2020-11-30','2020-12-01','F2','VN'),(39,'Minh','2020-12-08','2020-12-09','F1','Thailand');
+INSERT INTO `khai_bao_canh_ly` VALUES (39,'Minh','2020-11-30','2020-12-01','F0','test'),(39,'Minh','2020-12-08','2020-12-09','F1','Thailand');
 /*!40000 ALTER TABLE `khai_bao_canh_ly` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -52,4 +53,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-13 11:26:06
+-- Dump completed on 2020-12-15 21:52:10

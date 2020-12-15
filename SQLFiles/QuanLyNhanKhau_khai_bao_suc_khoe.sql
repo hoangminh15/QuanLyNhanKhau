@@ -27,7 +27,9 @@ CREATE TABLE `khai_bao_suc_khoe` (
   `hoTen` varchar(100) NOT NULL,
   `trieuChung` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
   `nguoiTiepXuc` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
-  `tieuSuBenh` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL
+  `tieuSuBenh` varchar(200) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  KEY `fk_khai_bao_suc_khoe_1_idx` (`ID`),
+  CONSTRAINT `fk_khai_bao_suc_khoe_1` FOREIGN KEY (`ID`) REFERENCES `nhan_khau` (`ID`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -50,4 +52,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-13 11:26:05
+-- Dump completed on 2020-12-15 21:52:09

@@ -32,7 +32,7 @@ CREATE TABLE `tam_tru` (
   `lyDo` text CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`ID`),
   KEY `idNhanKhau` (`idNhanKhau`),
-  CONSTRAINT `tam_tru_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`)
+  CONSTRAINT `tam_tru_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -42,7 +42,6 @@ CREATE TABLE `tam_tru` (
 
 LOCK TABLES `tam_tru` WRITE;
 /*!40000 ALTER TABLE `tam_tru` DISABLE KEYS */;
-INSERT INTO `tam_tru` VALUES (2,40,'a','0982703283','2020-12-01','2020-12-02','aaaa'),(3,40,'a','a','2020-12-02','2020-12-03','a'),(4,40,'a','a','2020-12-10','2020-12-18','aaa');
 /*!40000 ALTER TABLE `tam_tru` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-13 11:26:05
+-- Dump completed on 2020-12-15 21:52:09

@@ -32,7 +32,7 @@ CREATE TABLE `tam_vang` (
   `lyDo` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`ID`),
   KEY `idNhanKhau` (`idNhanKhau`),
-  CONSTRAINT `tam_vang_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`)
+  CONSTRAINT `tam_vang_ibfk_1` FOREIGN KEY (`idNhanKhau`) REFERENCES `nhan_khau` (`ID`) ON DELETE CASCADE ON UPDATE RESTRICT
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -42,7 +42,6 @@ CREATE TABLE `tam_vang` (
 
 LOCK TABLES `tam_vang` WRITE;
 /*!40000 ALTER TABLE `tam_vang` DISABLE KEYS */;
-INSERT INTO `tam_vang` VALUES (3,40,'1','a','2020-12-01','2020-12-02','a'),(9,40,'a','a','2020-12-02','2020-12-03','asdfasdfasdf'),(10,40,'a','a','2020-12-01','2020-12-01','a');
 /*!40000 ALTER TABLE `tam_vang` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +54,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-13 11:26:06
+-- Dump completed on 2020-12-15 21:52:09
