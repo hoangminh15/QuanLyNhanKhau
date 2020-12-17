@@ -1,5 +1,6 @@
 package controllers.nhanKhauControllers;
 
+import controllers.NhanKhauController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,20 +19,6 @@ public class SceneSwitchNhanKhau {
     private Parent parent;
     private Scene scene;
 
-    public void changeSceneThemMoi(ActionEvent event) throws IOException {
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Stage popUpStage = new Stage();
-        loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/view/NhanKhau/ThemMoi.fxml"));
-        parent = loader.load();
-        scene = new Scene(parent);
-        popUpStage.initModality(Modality.APPLICATION_MODAL);
-        popUpStage.initOwner(stage);
-        popUpStage.setTitle("Thêm mới nhân khẩu");
-        popUpStage.setScene(scene);
-        popUpStage.centerOnScreen();
-        popUpStage.show();
-    }
 
     public void changeSceneTamVang(ActionEvent event) throws IOException{
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -63,20 +50,6 @@ public class SceneSwitchNhanKhau {
         popUpStage.show();
     }
 
-    public void changeSceneKhaiTu(ActionEvent event) throws IOException{
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Stage popUpStage = new Stage();
-        loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/view/NhanKhau/KhaiTu.fxml"));
-        parent = loader.load();
-        scene = new Scene(parent);
-        popUpStage.initModality(Modality.APPLICATION_MODAL);
-        popUpStage.initOwner(stage);
-        popUpStage.setTitle("Khai tử");
-        popUpStage.setScene(scene);
-        popUpStage.centerOnScreen();
-        popUpStage.show();
-    }
 
     public void changeSceneChiTiet(MouseEvent event, NhanKhauModel nhanKhauModel) throws IOException{
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

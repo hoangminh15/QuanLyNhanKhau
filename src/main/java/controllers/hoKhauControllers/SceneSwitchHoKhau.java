@@ -17,20 +17,6 @@ public class SceneSwitchHoKhau {
     private Parent parent;
     private Scene scene;
 
-    public void changeSceneThemMoi(ActionEvent event) throws IOException {
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Stage popUpStage = new Stage();
-        loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/view/HoKhau/ThemMoi.fxml"));
-        parent = loader.load();
-        scene = new Scene(parent);
-        popUpStage.initModality(Modality.APPLICATION_MODAL);
-        popUpStage.initOwner(stage);
-        popUpStage.setTitle("Thêm mới hộ khẩu");
-        popUpStage.setScene(scene);
-        popUpStage.centerOnScreen();
-        popUpStage.show();
-    }
 
     public void changeSceneTachHoKhau(ActionEvent event) throws IOException {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

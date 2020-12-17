@@ -3,6 +3,7 @@ package services;
 import beans.HoKhauBean;
 import controllers.LoginController;
 import models.HoKhauModel;
+import models.KhaiTuModel;
 import models.NhanKhauModel;
 import models.ThanhVienCuaHoModel;
 
@@ -274,15 +275,5 @@ public class HoKhauService {
         }
     }
 
-    public void khaiTu(int idNguoiChet) {
-        try{
-            Connection connection = MysqlConnection.getMysqlConnection();
-            Statement statement = connection.createStatement();
-            String query = "DELETE FROM `QuanLyNhanKhau`.`nhan_khau` WHERE (`ID` = '" + idNguoiChet + "');";
-            statement.executeUpdate(query);
 
-        } catch (Exception e){
-            e.printStackTrace();
-        }
-    }
 }

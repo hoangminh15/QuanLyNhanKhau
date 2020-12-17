@@ -8,11 +8,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import services.HoKhauService;
 
 import java.io.IOException;
@@ -44,6 +50,10 @@ public class HoKhauController implements Initializable {
         sceneSwitch = new SceneSwitch();
         sceneSwitchHoKhau = new SceneSwitchHoKhau();
         hoKhauService = new HoKhauService();
+        setDataTable();
+    }
+
+    public void setDataTable(){
         listHoKhauBeans = hoKhauService.getListHoKhau();
         observableListHoKhauBeans = FXCollections.observableList(listHoKhauBeans);
         maHoKhau.setCellValueFactory(hoKhauBean -> new ReadOnlyObjectWrapper<>(hoKhauBean.getValue().getHoKhauModel().getMaHoKhau()));
@@ -53,7 +63,19 @@ public class HoKhauController implements Initializable {
     }
 
     public void themMoi(ActionEvent event) throws IOException {
-        sceneSwitchHoKhau.changeSceneThemMoi(event);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage popUpStage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/HoKhau/ThemMoi.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        popUpStage.initModality(Modality.APPLICATION_MODAL);
+        popUpStage.initOwner(stage);
+        popUpStage.setTitle("Thêm mới hộ khẩu");
+        popUpStage.setScene(scene);
+        popUpStage.centerOnScreen();
+        popUpStage.showAndWait();
+        setDataTable();
     }
 
     public void tachHoKhau(ActionEvent event) throws IOException{

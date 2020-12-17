@@ -1,5 +1,7 @@
 package controllers.covidControllers;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -27,7 +29,7 @@ public class ThemMoiController implements Initializable {
     @FXML
     DatePicker thoiGianTestDP;
     @FXML
-    TextField ketQuaTestText;
+    ComboBox<String> ketQuaTestCB;
     @FXML
     TextField hinhThucTestText;
     @FXML
@@ -39,6 +41,8 @@ public class ThemMoiController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        ObservableList<String> ketQuaTestList = FXCollections.observableArrayList("Âm tính", "Dương tính");
+        ketQuaTestCB.setItems(ketQuaTestList);
         testCovidModel = new TestCovidModel();
         setUpForCheck();
     }
@@ -68,7 +72,7 @@ public class ThemMoiController implements Initializable {
             soCMTText.setEditable(false);
             checkedIcon.setVisible(true);
             thoiGianTestDP.setDisable(false);
-            ketQuaTestText.setDisable(false);
+            ketQuaTestCB.setDisable(false);
             hinhThucTestText.setDisable(false);
             xacNhanButton.setDisable(false);
             huyButton.setDisable(false);
@@ -124,7 +128,7 @@ public class ThemMoiController implements Initializable {
         if (!validateForm()) {
             testCovidModel.setHoTen(hoTenLB.getText());
             testCovidModel.setThoiGianTest(String.valueOf(thoiGianTestDP.getValue()));
-            testCovidModel.setKetQuaTest(ketQuaTestText.getText().trim());
+            testCovidModel.setKetQuaTest(ketQuaTestCB.getValue().trim());
             testCovidModel.setHinhThucTest(hinhThucTestText.getText().trim());
             if (new CovidService().addNew(testCovidModel)) {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
@@ -133,7 +137,7 @@ public class ThemMoiController implements Initializable {
                 soCMTText.setText("");
                 hoTenLB.setText("");
                 thoiGianTestDP.setValue(null);
-                ketQuaTestText.setText("");
+                ketQuaTestCB.setValue(null);
                 hinhThucTestText.setText("");
                 setUpForCheck();
             }
@@ -149,7 +153,7 @@ public class ThemMoiController implements Initializable {
     public void setUpForCheck() {
         checkedIcon.setVisible(false);
         thoiGianTestDP.setDisable(true);
-        ketQuaTestText.setDisable(true);
+        ketQuaTestCB.setDisable(true);
         hinhThucTestText.setDisable(true);
         xacNhanButton.setDisable(true);
         huyButton.setDisable(true);
@@ -158,7 +162,7 @@ public class ThemMoiController implements Initializable {
 
     private boolean validateForm() {
         return (thoiGianTestDP.getValue() == null
-                || ketQuaTestText.getText().trim().isEmpty()
+                || ketQuaTestCB.getValue().trim().isEmpty()
                 || hinhThucTestText.getText().trim().isEmpty());
     }
 

@@ -69,20 +69,6 @@ public class SceneSwitchCovid {
         popUpStage.show();
     }
 
-    public void changeSceneThemMoi (ActionEvent event) throws IOException {
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        Stage popUpStage = new Stage();
-        loader = new FXMLLoader();
-        loader.setLocation(getClass().getResource("/view/Covid/ThemMoi.fxml"));
-        parent = loader.load();
-        scene = new Scene(parent);
-        popUpStage.initModality(Modality.APPLICATION_MODAL);
-        popUpStage.initOwner(stage);
-        popUpStage.setTitle("Thêm mới người được theo dõi cách ly");
-        popUpStage.setScene(scene);
-        popUpStage.centerOnScreen();
-        popUpStage.show();
-    }
 
     public void changeSceneChiTiet(MouseEvent event, TestCovidModel testCovidModel) throws IOException {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();

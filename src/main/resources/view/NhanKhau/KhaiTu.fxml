@@ -13,7 +13,7 @@
 <AnchorPane prefHeight="489.0" prefWidth="642.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.nhanKhauControllers.KhaiTuController">
    <children>
       <Label layoutX="22.0" layoutY="37.0" text="Số CMT người chết:" />
-      <TextField fx:id="soCMTnguoiKhai" layoutX="150.0" layoutY="32.0" prefHeight="26.0" prefWidth="304.0" />
+      <TextField fx:id="soCMTnguoiChet" layoutX="150.0" layoutY="32.0" prefHeight="26.0" prefWidth="304.0" />
       <Label layoutX="469.0" layoutY="37.0" text="(*)" textFill="RED" />
       <Label layoutX="33.0" layoutY="165.0" text="Số giấy khai tử">
          <font>
@@ -48,17 +48,14 @@
       </ImageView>
       <Button fx:id="checkButton" layoutX="498.0" layoutY="32.0" mnemonicParsing="false" onAction="#check" text="Check" />
       <Label layoutX="22.0" layoutY="77.0" text="Số CMT người khai:" />
-      <TextField fx:id="soCMTnguoiChet" layoutX="150.0" layoutY="72.0" prefHeight="26.0" prefWidth="304.0" />
+      <TextField fx:id="soCMTnguoiKhai" layoutX="150.0" layoutY="72.0" prefHeight="26.0" prefWidth="304.0" />
       <Label layoutX="469.0" layoutY="77.0" text="(*)" textFill="RED" />
-      <ImageView fx:id="checkedIcon1" fitHeight="36.0" fitWidth="36.0" layoutX="571.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../icons/checked.png" />
-         </image>
-      </ImageView>
-      <Button fx:id="check1Button" layoutX="498.0" layoutY="72.0" mnemonicParsing="false" onAction="#check" text="Check" />
       <Label layoutX="490.0" layoutY="167.0" text="(*)" textFill="RED" />
       <Label layoutX="490.0" layoutY="212.0" text="(*)" textFill="RED" />
       <Label layoutX="490.0" layoutY="256.0" text="(*)" textFill="RED" />
       <Label layoutX="490.0" layoutY="303.0" text="(*)" textFill="RED" />
+      <Label layoutX="22.0" layoutY="111.0" text="Tên người khai:" />
+      <TextField fx:id="tenNguoiKhai" layoutX="150.0" layoutY="106.0" prefHeight="26.0" prefWidth="304.0" />
+      <Label layoutX="469.0" layoutY="111.0" text="(*)" textFill="RED" />
    </children>
 </AnchorPane>

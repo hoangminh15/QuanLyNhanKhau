@@ -1,26 +1,24 @@
 package services;
 
 import beans.NhanKhauBean;
-import models.ChungMinhThuModel;
-import models.GiaDinhModel;
-import models.NhanKhauModel;
-import models.TieuSuModel;
+import models.*;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
 
 public class NhanKhauService {
-    
-    /* 
+
+    /*
      * Ham lay ra 1 nhan khau trong db bang chung minh thu
-     * 
+     *
      */
     public NhanKhauBean getNhanKhau(String cmt) {
-        NhanKhauBean nhanKhauBean = new NhanKhauBean();  
+        NhanKhauBean nhanKhauBean = new NhanKhauBean();
         // truy cap db
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
@@ -28,7 +26,7 @@ public class NhanKhauService {
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             int idNhanKhau = -1;
-            while (rs.next()){
+            while (rs.next()) {
                 NhanKhauModel nhanKhau = nhanKhauBean.getNhanKhauModel();
                 ChungMinhThuModel chungMinhThuModel = nhanKhauBean.getChungMinhThuModel();
                 idNhanKhau = rs.getInt("idNhanKhau");
@@ -53,10 +51,10 @@ public class NhanKhauService {
             preparedStatement.close();
             if (idNhanKhau > 0) {
                 query = "SELECT * FROM tieu_su WHERE idNhanKhau = " + idNhanKhau;
-                preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+                preparedStatement = (PreparedStatement) connection.prepareStatement(query);
                 rs = preparedStatement.executeQuery();
                 List<TieuSuModel> listTieuSuModels = new ArrayList<>();
-                while (rs.next()) {                    
+                while (rs.next()) {
                     TieuSuModel tieuSuModel = new TieuSuModel();
                     tieuSuModel.setID(rs.getInt("ID"));
                     tieuSuModel.setIdNhanKhau(rs.getInt("idNhanKhau"));
@@ -69,9 +67,9 @@ public class NhanKhauService {
                 }
                 nhanKhauBean.setListTieuSuModels(listTieuSuModels);
                 preparedStatement.close();
-                
+
                 query = "SELECT * FROM gia_dinh WHERE idNhanKhau = " + idNhanKhau;
-                preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+                preparedStatement = (PreparedStatement) connection.prepareStatement(query);
                 rs = preparedStatement.executeQuery();
                 List<GiaDinhModel> listGiaDinhModels = new ArrayList<>();
                 while (rs.next()) {
@@ -85,7 +83,7 @@ public class NhanKhauService {
                     giaDinhModel.setNgheNghiep(rs.getString("ngheNghiep"));
                     giaDinhModel.setQuanHeVoiNhanKhau(rs.getString("quanHeVoiNhanKhau"));
                     listGiaDinhModels.add(giaDinhModel);
-                }                    
+                }
                 nhanKhauBean.setListGiaDinhModels(listGiaDinhModels);
                 preparedStatement.close();
             }
@@ -95,16 +93,16 @@ public class NhanKhauService {
         }
         return nhanKhauBean;
     }
-    
-     // lay danh sach 10 nhan khau moi duoc them vao
+
+    // lay danh sach 10 nhan khau moi duoc them vao
     public List<NhanKhauBean> getListNhanKhau() {
         List<NhanKhauBean> list = new ArrayList<>();
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
             String query = "SELECT * FROM nhan_khau INNER JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau ORDER BY ngayTao DESC";
-            PreparedStatement preparedStatement = (PreparedStatement)connection.prepareStatement(query);
+            PreparedStatement preparedStatement = (PreparedStatement) connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 NhanKhauBean nhanKhauBean = new NhanKhauBean();
                 NhanKhauModel nhanKhau = nhanKhauBean.getNhanKhauModel();
                 nhanKhau.setID(rs.getInt("ID"));
@@ -130,18 +128,18 @@ public class NhanKhauService {
         }
         return list;
     }
-    
+
     public List<NhanKhauBean> statisticNhanKhau(int TuTuoi, int denTuoi, String gender, String Status, int tuNam, int denNam) {
         List<NhanKhauBean> list = new ArrayList<>();
-        
+
         String query = "SELECT * FROM nhan_khau "
-                    + " INNER JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau"
-                    + " LEFT JOIN tam_tru ON nhan_khau.ID = tam_tru.idNhanKhau "
-                    + " LEFT JOIN tam_vang ON nhan_khau.ID = tam_vang.idNhanKhau "
-                    + " WHERE ROUND(DATEDIFF(CURDATE(),namSinh)/365 , 0) >= "
-                    + TuTuoi
-                    + " AND ROUND(DATEDIFF(CURDATE(),namSinh)/365 , 0) <= "
-                    + denTuoi;
+                + " INNER JOIN chung_minh_thu ON nhan_khau.ID = chung_minh_thu.idNhanKhau"
+                + " LEFT JOIN tam_tru ON nhan_khau.ID = tam_tru.idNhanKhau "
+                + " LEFT JOIN tam_vang ON nhan_khau.ID = tam_vang.idNhanKhau "
+                + " WHERE ROUND(DATEDIFF(CURDATE(),namSinh)/365 , 0) >= "
+                + TuTuoi
+                + " AND ROUND(DATEDIFF(CURDATE(),namSinh)/365 , 0) <= "
+                + denTuoi;
         if (!gender.equalsIgnoreCase("Toan Bo")) {
             query += " AND nhan_khau.gioiTinh = '" + gender + "'";
         }
@@ -150,7 +148,7 @@ public class NhanKhauService {
                     + " AND (tam_vang.denNgay <= CURDATE() OR tam_vang.denNgay IS NULL)";
         } else if (Status.equalsIgnoreCase("Thuong tru")) {
             query += " AND tam_tru.denNgay IS NULL";
-            
+
         } else if (Status.equalsIgnoreCase("Tam tru")) {
             query += " AND (YEAR(tam_tru.tuNgay) BETWEEN "
                     + tuNam
@@ -165,13 +163,13 @@ public class NhanKhauService {
                     + ")";
         }
         query += " ORDER BY ngayTao DESC";
-         try {
+        try {
             Connection connection = MysqlConnection.getMysqlConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
             int idNhanKhau = -1;
-            while (rs.next()){
-                NhanKhauBean  nhanKhauBean = new NhanKhauBean();
+            while (rs.next()) {
+                NhanKhauBean nhanKhauBean = new NhanKhauBean();
                 NhanKhauModel nhanKhau = nhanKhauBean.getNhanKhauModel();
                 ChungMinhThuModel chungMinhThuModel = nhanKhauBean.getChungMinhThuModel();
                 idNhanKhau = rs.getInt("idNhanKhau");
@@ -192,13 +190,13 @@ public class NhanKhauService {
                 chungMinhThuModel.setSoCMT(rs.getString("soCMT"));
                 chungMinhThuModel.setNgayCap(rs.getDate("ngayCap"));
                 chungMinhThuModel.setNoiCap(rs.getString("noiCap"));
-                
+
                 if (idNhanKhau > 0) {
                     String sql = "SELECT * FROM tieu_su WHERE idNhanKhau = " + idNhanKhau;
-                    PreparedStatement prst = (PreparedStatement)connection.prepareStatement(sql);
+                    PreparedStatement prst = (PreparedStatement) connection.prepareStatement(sql);
                     ResultSet rs_temp = prst.executeQuery();
                     List<TieuSuModel> listTieuSuModels = new ArrayList<>();
-                    while (rs_temp.next()) {                    
+                    while (rs_temp.next()) {
                         TieuSuModel tieuSuModel = new TieuSuModel();
                         tieuSuModel.setID(rs_temp.getInt("ID"));
                         tieuSuModel.setIdNhanKhau(rs_temp.getInt("idNhanKhau"));
@@ -213,7 +211,7 @@ public class NhanKhauService {
                     prst.close();
 
                     sql = "SELECT * FROM gia_dinh WHERE idNhanKhau = " + idNhanKhau;
-                    prst = (PreparedStatement)connection.prepareStatement(sql);
+                    prst = (PreparedStatement) connection.prepareStatement(sql);
                     rs_temp = prst.executeQuery();
                     List<GiaDinhModel> listGiaDinhModels = new ArrayList<>();
                     while (rs_temp.next()) {
@@ -227,7 +225,7 @@ public class NhanKhauService {
                         giaDinhModel.setNgheNghiep(rs_temp.getString("ngheNghiep"));
                         giaDinhModel.setQuanHeVoiNhanKhau(rs_temp.getString("quanHeVoiNhanKhau"));
                         listGiaDinhModels.add(giaDinhModel);
-                    }                    
+                    }
                     nhanKhauBean.setListGiaDinhModels(listGiaDinhModels);
                     prst.close();
                 }
@@ -235,17 +233,18 @@ public class NhanKhauService {
             }
             preparedStatement.close();
         } catch (Exception e) {
-             System.out.println(e.getMessage());
+            System.out.println(e.getMessage());
         }
-        
+
         return list;
     }
-    
+
+
     /*
      * ham tim kiem nhan khau theo ten
      */
     public List<NhanKhauBean> search(String keyword) {
-        List<NhanKhauBean> list = new  ArrayList<>();
+        List<NhanKhauBean> list = new ArrayList<>();
         String query;
         if (keyword.trim().isEmpty()) {
             return this.getListNhanKhau();
@@ -270,13 +269,13 @@ public class NhanKhauService {
                     + keyword
                     + "' IN NATURAL LANGUAGE MODE);";
         }
-        
+
         // execute query
         try {
             Connection connection = MysqlConnection.getMysqlConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(query);
             ResultSet rs = preparedStatement.executeQuery();
-            while (rs.next()){
+            while (rs.next()) {
                 NhanKhauBean temp = new NhanKhauBean();
                 NhanKhauModel nhanKhau = temp.getNhanKhauModel();
                 nhanKhau.setID(rs.getInt("ID"));
@@ -284,7 +283,7 @@ public class NhanKhauService {
                 nhanKhau.setGioiTinh(rs.getString("gioiTinh"));
                 nhanKhau.setNamSinh(rs.getDate("namSinh"));
                 nhanKhau.setDiaChiHienNay(rs.getString("diaChiHienNay"));
-                
+
                 ChungMinhThuModel chungMinhThuModel = temp.getChungMinhThuModel();
                 chungMinhThuModel.setIdNhanKhau(rs.getInt("idNhanKhau"));
                 chungMinhThuModel.setSoCMT(rs.getString("soCMT"));
@@ -301,6 +300,36 @@ public class NhanKhauService {
     }
 
 
+    public void khaiTu(int idNguoiChet) {
+        try {
+            Connection connection = MysqlConnection.getMysqlConnection();
+            Statement statement = connection.createStatement();
+            String query = "DELETE FROM `QuanLyNhanKhau`.`nhan_khau` WHERE (`ID` = '" + idNguoiChet + "');";
+            statement.executeUpdate(query);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void themKhaiTu(KhaiTuModel khaiTuModel) {
+        try {
+            int ID = khaiTuModel.getID();
+            String soCMTnguoiChet = khaiTuModel.getSoCMTnguoiMat();
+            String soCMTnguoiKhai = khaiTuModel.getSoCMTnguoiKhai();
+            String tenNguoiKhai = khaiTuModel.getTenNguoiKhai();
+            String soGiayKhaiTu = khaiTuModel.getSoGiayKhaiTu();
+            String ngayKhai = khaiTuModel.getNgayKhai();
+            String ngayMat = khaiTuModel.getNgayMat();
+            String lyDoChet = khaiTuModel.getLyDoChet();
+            Connection connection = MysqlConnection.getMysqlConnection();
+            Statement statement = connection.createStatement();
+            String query = "INSERT INTO `QuanLyNhanKhau`.`khai_tu` (`ID`, `soCMTnguoiChet`, `soCMTnguoiKhai`, `tenNguoiKhai`, `soGiayKhaiTu`, `ngayKhai`, `ngayMat`, `lyDoChet`) VALUES (null, '" + soCMTnguoiChet + "', '" + soCMTnguoiKhai + "', '" + tenNguoiKhai + "', '" + soGiayKhaiTu + "', '" + ngayKhai + "', '" + ngayMat + "', '" + lyDoChet + "');";
+            statement.executeUpdate(query);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /*
      * Ham xử lý ngoại lệ : thông báo ra lỗi nhận được

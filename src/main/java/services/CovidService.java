@@ -138,19 +138,20 @@ public class CovidService {
     }
 
     public String getCMTfromID(int ID){
+        String soCMT = null;
         try{
             Connection connection = MysqlConnection.getMysqlConnection();
             String idString = String.valueOf(ID);
-            String query = "SELECT * FROM chung_minh_thu WHERE ID = '" + idString + "'";
+            String query = "SELECT * FROM chung_minh_thu WHERE idNhanKhau = '" + idString + "'";
             ResultSet rs = connection.createStatement().executeQuery(query);
             if(rs.next()){
-                String soCMT = rs.getString("soCMT");
-                return soCMT;
+                soCMT = rs.getString("soCMT");
+
             }
         } catch (Exception e){
             e.printStackTrace();
         }
-        return null;
+        return soCMT;
     }
 
     public List<KhaiBaoCachLyModel> getKhaiBaoCachLyByID(int ID){

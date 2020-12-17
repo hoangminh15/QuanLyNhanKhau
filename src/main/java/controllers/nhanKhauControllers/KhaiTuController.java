@@ -7,13 +7,17 @@ import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
+import models.KhaiTuModel;
 import services.HoKhauService;
 import services.MysqlConnection;
+import services.NhanKhauService;
 
 import java.net.URL;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.time.ZoneId;
 import java.util.ResourceBundle;
 
 public class KhaiTuController implements Initializable {
@@ -21,9 +25,9 @@ public class KhaiTuController implements Initializable {
     @FXML
     ImageView checkedIcon;
     @FXML
-    ImageView checkedIcon1;
-    @FXML
     TextField soCMTnguoiChet;
+    @FXML
+    TextField tenNguoiKhai;
     @FXML
     TextField soCMTnguoiKhai;
     @FXML
@@ -37,8 +41,6 @@ public class KhaiTuController implements Initializable {
     @FXML
     Button checkButton;
     @FXML
-    Button check1Button;
-    @FXML
     Button xacNhanButton;
     @FXML
     Button huyButton;
@@ -46,25 +48,20 @@ public class KhaiTuController implements Initializable {
 
     boolean isValid, isValid1;
     int idNguoiChet;
-    HoKhauService hoKhauService;
+    NhanKhauService nhanKhauService;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        hoKhauService = new HoKhauService();
+        nhanKhauService = new NhanKhauService();
         checkedIcon.setVisible(false);
-        checkedIcon1.setVisible(false);
         soGiayKhaiTu.setDisable(true);
         ngayKhai.setDisable(true);
         ngayMat.setDisable(true);
         lyDoChet.setDisable(true);
     }
 
-    public void check(ActionEvent event){
-        String tempCMT;
-        if(event.getSource().equals(checkButton)){
-            tempCMT = soCMTnguoiChet.getText().trim();
-        } else {
-            tempCMT = soCMTnguoiKhai.getText().trim();
-        }
+    public void check(ActionEvent event) {
+        String tempCMT = soCMTnguoiChet.getText().trim();
         if (tempCMT.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Warning!");
@@ -83,35 +80,40 @@ public class KhaiTuController implements Initializable {
             }
         }
         int tempID = checkCMT(tempCMT);
-        if (tempID != -1){
-            if(event.getSource().equals(checkButton)){
-                isValid = true;
-            } else {
-                isValid1 = true;
-            }
-            if(isValid && isValid1) {
-                soCMTnguoiKhai.setEditable(false);
-                soCMTnguoiChet.setEditable(false);
-                checkedIcon.setVisible(true);
-                checkedIcon1.setVisible(true);
-                soGiayKhaiTu.setDisable(false);
-                ngayKhai.setDisable(false);
-                ngayMat.setDisable(false);
-                lyDoChet.setDisable(false);
-                xacNhanButton.setDisable(false);
-                huyButton.setDisable(false);
+        if (tempID != -1 && !soCMTnguoiKhai.getText().isBlank() && !tenNguoiKhai.getText().isBlank()) {
+            soCMTnguoiKhai.setEditable(false);
+            checkedIcon.setVisible(true);
+            soGiayKhaiTu.setDisable(false);
+            ngayKhai.setDisable(false);
+            ngayMat.setDisable(false);
+            lyDoChet.setDisable(false);
+            xacNhanButton.setDisable(false);
+            huyButton.setDisable(false);
+            idNguoiChet = checkCMT(soCMTnguoiChet.getText());
 
-                idNguoiChet = checkCMT(soCMTnguoiChet.getText());
-            }
-        } else{
+        } else {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setContentText("Không tìm thấy số CMT trong hệ thống");
+            alert.setContentText("Chưa nhập đủ thông tin người khai hoặc không tìm thấy số CMT trong hệ thống");
             alert.show();
         }
     }
 
-    public void xacNhan(ActionEvent event){
-        hoKhauService.khaiTu(idNguoiChet);
+    public void xacNhan(ActionEvent event) {
+
+        KhaiTuModel khaiTuModel = new KhaiTuModel();
+        khaiTuModel.setSoCMTnguoiKhai(soCMTnguoiKhai.getText());
+        khaiTuModel.setSoCMTnguoiMat(soCMTnguoiChet.getText());
+        khaiTuModel.setTenNguoiKhai(tenNguoiKhai.getText());
+        khaiTuModel.setNgayMat(ngayMat.getValue().toString());
+        khaiTuModel.setNgayKhai(ngayKhai.getValue().toString());
+        khaiTuModel.setLyDoChet(lyDoChet.getText());
+        khaiTuModel.setSoGiayKhaiTu(soGiayKhaiTu.getText());
+
+        nhanKhauService.themKhaiTu(khaiTuModel);
+        nhanKhauService.khaiTu(idNguoiChet);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Thêm thành công");
+        alert.show();
         huy(event);
     }
 

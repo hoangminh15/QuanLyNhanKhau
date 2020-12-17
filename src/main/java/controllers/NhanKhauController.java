@@ -5,12 +5,18 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import models.NhanKhauModel;
 import services.NhanKhauService;
 
@@ -84,7 +90,19 @@ public class NhanKhauController implements Initializable {
     }
 
     public void themMoi(ActionEvent event) throws IOException {
-        sceneSwitchNhanKhau.changeSceneThemMoi(event);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage popUpStage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/NhanKhau/ThemMoi.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        popUpStage.initModality(Modality.APPLICATION_MODAL);
+        popUpStage.initOwner(stage);
+        popUpStage.setTitle("Thêm mới nhân khẩu");
+        popUpStage.setScene(scene);
+        popUpStage.centerOnScreen();
+        popUpStage.showAndWait();
+        setDataTable();
     }
 
     public void dangKyTamVang(ActionEvent event) throws IOException {
@@ -96,7 +114,19 @@ public class NhanKhauController implements Initializable {
     }
 
     public void khaiTu(ActionEvent event) throws IOException {
-        sceneSwitchNhanKhau.changeSceneKhaiTu(event);
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        Stage popUpStage = new Stage();
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource("/view/NhanKhau/KhaiTu.fxml"));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        popUpStage.initModality(Modality.APPLICATION_MODAL);
+        popUpStage.initOwner(stage);
+        popUpStage.setTitle("Khai tử");
+        popUpStage.setScene(scene);
+        popUpStage.centerOnScreen();
+        popUpStage.showAndWait();
+        setDataTable();
     }
 
     public void refreshData(NhanKhauBean nhanKhauBean) {

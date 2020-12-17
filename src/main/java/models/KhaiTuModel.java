@@ -8,11 +8,12 @@ import java.util.Date;
  */
 public class KhaiTuModel {
     private int ID;
+    private String soCMTnguoiKhai;
+    private String soCMTnguoiMat;
+    private String tenNguoiKhai;
     private String soGiayKhaiTu;
-    private int idNguoiKhai;
-    private int idNguoiChet;
-    private Date ngayKhai;
-    private Date ngayChet;
+    private String ngayKhai;
+    private String ngayMat;
     private String lyDoChet;
 
     public int getID() {
@@ -23,6 +24,30 @@ public class KhaiTuModel {
         this.ID = ID;
     }
 
+    public String getSoCMTnguoiKhai() {
+        return soCMTnguoiKhai;
+    }
+
+    public void setSoCMTnguoiKhai(String soCMTnguoiKhai) {
+        this.soCMTnguoiKhai = soCMTnguoiKhai;
+    }
+
+    public String getSoCMTnguoiMat() {
+        return soCMTnguoiMat;
+    }
+
+    public void setSoCMTnguoiMat(String soCMTnguoiMat) {
+        this.soCMTnguoiMat = soCMTnguoiMat;
+    }
+
+    public String getTenNguoiKhai() {
+        return tenNguoiKhai;
+    }
+
+    public void setTenNguoiKhai(String tenNguoiKhai) {
+        this.tenNguoiKhai = tenNguoiKhai;
+    }
+
     public String getSoGiayKhaiTu() {
         return soGiayKhaiTu;
     }
@@ -31,36 +56,20 @@ public class KhaiTuModel {
         this.soGiayKhaiTu = soGiayKhaiTu;
     }
 
-    public int getIdNguoiKhai() {
-        return idNguoiKhai;
-    }
-
-    public void setIdNguoiKhai(int idNguoiKhai) {
-        this.idNguoiKhai = idNguoiKhai;
-    }
-
-    public int getIdNguoiChet() {
-        return idNguoiChet;
-    }
-
-    public void setIdNguoiChet(int idNguoiChet) {
-        this.idNguoiChet = idNguoiChet;
-    }
-
-    public Date getNgayKhai() {
+    public String getNgayKhai() {
         return ngayKhai;
     }
 
-    public void setNgayKhai(Date ngayKhai) {
+    public void setNgayKhai(String ngayKhai) {
         this.ngayKhai = ngayKhai;
     }
 
-    public Date getNgayChet() {
-        return ngayChet;
+    public String getNgayMat() {
+        return ngayMat;
     }
 
-    public void setNgayChet(Date ngayChet) {
-        this.ngayChet = ngayChet;
+    public void setNgayMat(String ngayMat) {
+        this.ngayMat = ngayMat;
     }
 
     public String getLyDoChet() {
@@ -70,6 +79,4 @@ public class KhaiTuModel {
     public void setLyDoChet(String lyDoChet) {
         this.lyDoChet = lyDoChet;
     }
-    
-    
 }
